@@ -23,7 +23,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.0.3):
     - CocoaLumberjack/Default
-  - CYLTabBarController (1.8.0)
+  - CYLTabBarController (1.6.7)
   - FLEX (2.1.1)
   - GTSDK (1.5.3)
   - JSONModel (1.0.2)
@@ -47,18 +47,107 @@ PODS:
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
   - UMengAnalytics-NO-IDFA (4.1.9)
-  - UMengUShare/Core (6.1.2):
+  - UMengUShare (6.2.2):
+    - UMengUShare/Core (= 6.2.2)
+    - UMengUShare/Network (= 6.2.2)
+    - UMengUShare/Plugin (= 6.2.2)
+    - UMengUShare/Social (= 6.2.2)
+    - UMengUShare/UI (= 6.2.2)
+  - UMengUShare/Core (6.2.2):
     - UMengUShare/Network
-  - UMengUShare/Network (6.1.2)
-  - UMengUShare/Social/QQ (6.1.2):
+  - UMengUShare/Network (6.2.2)
+  - UMengUShare/Plugin (6.2.2):
     - UMengUShare/Core
-  - UMengUShare/Social/Sina (6.1.2):
+    - UMengUShare/Plugin/IDFA (= 6.2.2)
+  - UMengUShare/Plugin/IDFA (6.2.2):
     - UMengUShare/Core
-  - UMengUShare/Social/TencentWeibo (6.1.2):
+  - UMengUShare/Social (6.2.2):
     - UMengUShare/Core
-  - UMengUShare/Social/WeChat (6.1.2):
+    - UMengUShare/Social/AlipayShare (= 6.2.2)
+    - UMengUShare/Social/DingDing (= 6.2.2)
+    - UMengUShare/Social/Douban (= 6.2.2)
+    - UMengUShare/Social/DropBox (= 6.2.2)
+    - UMengUShare/Social/Email (= 6.2.2)
+    - UMengUShare/Social/EverNote (= 6.2.2)
+    - UMengUShare/Social/Facebook (= 6.2.2)
+    - UMengUShare/Social/Flickr (= 6.2.2)
+    - UMengUShare/Social/GooglePlus (= 6.2.2)
+    - UMengUShare/Social/Instagram (= 6.2.2)
+    - UMengUShare/Social/Kakao (= 6.2.2)
+    - UMengUShare/Social/LaiWang (= 6.2.2)
+    - UMengUShare/Social/Line (= 6.2.2)
+    - UMengUShare/Social/Linkedin (= 6.2.2)
+    - UMengUShare/Social/Pinterest (= 6.2.2)
+    - UMengUShare/Social/Pocket (= 6.2.2)
+    - UMengUShare/Social/QQ (= 6.2.2)
+    - UMengUShare/Social/Renren (= 6.2.2)
+    - UMengUShare/Social/Sina (= 6.2.2)
+    - UMengUShare/Social/SMS (= 6.2.2)
+    - UMengUShare/Social/TencentWeibo (= 6.2.2)
+    - UMengUShare/Social/Tumblr (= 6.2.2)
+    - UMengUShare/Social/Twitter (= 6.2.2)
+    - UMengUShare/Social/VKontakte (= 6.2.2)
+    - UMengUShare/Social/WeChat (= 6.2.2)
+    - UMengUShare/Social/WhatsApp (= 6.2.2)
+    - UMengUShare/Social/YiXin (= 6.2.2)
+    - UMengUShare/Social/YouDao (= 6.2.2)
+  - UMengUShare/Social/AlipayShare (6.2.2):
     - UMengUShare/Core
-  - UMengUShare/UI (6.1.2):
+  - UMengUShare/Social/DingDing (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Douban (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/DropBox (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Email (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/EverNote (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Facebook (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Flickr (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/GooglePlus (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Instagram (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Kakao (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/LaiWang (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Line (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Linkedin (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Pinterest (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Pocket (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/QQ (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Renren (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/SMS (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/TencentWeibo (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Tumblr (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/Twitter (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/VKontakte (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/WhatsApp (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/YiXin (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/YouDao (6.2.2):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.2.2):
     - UMengUShare/Core
   - XAspect (1.0.5):
     - XAspect/Core (= 1.0.5)
@@ -69,32 +158,32 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
-  - Aspects
+  - AFNetworking (~> 3.1.0)
+  - Aspects (~> 1.4.1)
   - CocoaLumberjack (~> 2.0.0-rc)
-  - CYLTabBarController
+  - CYLTabBarController (~> 1.6.7)
   - FLEX (~> 2.0)
-  - GTSDK
+  - GTSDK (~> 1.5.3)
   - JSONModel (~> 1.0.1)
-  - JSPatch
+  - JSPatch (~> 1.1)
   - Masonry (~> 0.6.1)
   - ReactiveCocoa (~> 2.5)
   - RealReachability
   - SDWebImage (~> 3.7.5)
-  - UMengAnalytics-NO-IDFA
+  - UMengAnalytics-NO-IDFA (~> 4.1.5)
+  - UMengUShare (~> 6.1)
   - UMengUShare/Social/QQ
   - UMengUShare/Social/Sina
   - UMengUShare/Social/TencentWeibo
   - UMengUShare/Social/WeChat
-  - UMengUShare/UI
-  - XAspect
+  - XAspect (~> 1.0.5)
   - YYCache
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   CocoaLumberjack: f58d8a19629f4d8379ae14bb3534def24161430e
-  CYLTabBarController: 3b6befc12bccc2fd29a4d69e3ad7f9c4aaaf4506
+  CYLTabBarController: cc8b19463bd3a3d4b886a55c0a9440fdceefd3d6
   FLEX: 27b768fcae23a313a1eb115076d429180ca9b472
   GTSDK: 1b55fc5b0f29c7ea9061946f07aeee49ef70c90e
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
@@ -104,10 +193,10 @@ SPEC CHECKSUMS:
   RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   UMengAnalytics-NO-IDFA: 985292af177111685325c90c321094172b95d2cb
-  UMengUShare: b8c38579f8a4f2ce8dfb0c944cf868022a441bd3
+  UMengUShare: fc0a98b8d5297632e82874318fd72a10d17da228
   XAspect: db50bf487f92dbb8557a7a5365556966c8493af8
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 1a1214d7af614423c5c11d294058b79ae6cb3f45
+PODFILE CHECKSUM: 94c492e8887dcd79c731d5da1433fddc8bd5db90
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.1.1
