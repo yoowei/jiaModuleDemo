@@ -11,7 +11,6 @@
 #import "RealReachability.h"
 
 @protocol  BBBaseViewControllerDataSource<NSObject>
-
 @optional
 -(NSMutableAttributedString*)setTitle;
 -(UIButton*)set_leftButton;
@@ -25,9 +24,7 @@
 -(UIImage*)set_rightBarButtonItemWithImage;
 @end
 
-
 @protocol BBBaseViewControllerDelegate <NSObject>
-
 @optional
 -(void)left_button_event:(UIButton*)sender;
 -(void)right_button_event:(UIButton*)sender;

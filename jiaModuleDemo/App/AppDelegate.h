@@ -11,7 +11,7 @@
 
 #import "JiaPathchModel.h"
 
-@interface AppDelegate : JiaAppDelegate
+@interface AppDelegate : JiaAppDelegate //注意是继承关系
 
 @end
 

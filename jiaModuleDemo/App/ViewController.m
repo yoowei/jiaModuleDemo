@@ -60,7 +60,6 @@
 - (void)userVCNotification:(NSNotification *)dic{
     NSDictionary *infoDic=(NSDictionary *)dic.userInfo;
     NSLog(@"－－－－－接收到通知返回------");
-    
     NSLog(@"内容为：%@",infoDic);
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"回调回来的参数" message:[NSString stringWithFormat:@"内容为：%@",infoDic] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
@@ -110,6 +109,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *curParams=@{kDesignerModuleActionsDictionaryKeyName:@"wujunyang",kDesignerModuleActionsDictionaryKeyID:@"1001",kDesignerModuleActionsDictionaryKeyImage:@"designerImage"};
+    
     switch (indexPath.row) {
         case 0:
         {

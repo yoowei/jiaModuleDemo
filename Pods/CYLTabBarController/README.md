@@ -2,7 +2,7 @@
 
 
 <p align="center">
-![enter image description here](https://img.shields.io/badge/pod-v1.8.0-brightgreen.svg)
+![enter image description here](https://img.shields.io/badge/pod-v1.6.5-brightgreen.svg)
 ![enter image description here](https://img.shields.io/badge/Swift-compatible-orange.svg)   ![enter image description here](https://img.shields.io/badge/platform-iOS%207.0%2B-ff69b5152950834.svg) 
 <a href="https://github.com/ChenYilong/CYLTabBarController/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat"></a>
 [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/cyltabbarcontroller)
@@ -106,126 +106,47 @@
 
 ### 第一步：使用CocoaPods导入CYLTabBarController
 
-### CocoaPods 导入
 
- 1. CocoaPods 安装
+在 `Podfile` 中进行如下导入：
 
-  如果您的机器上已经安装了 CocoaPods，直接进入下一步即可。
 
-  如果您的网络已经翻墙，在终端中运行如下命令直接安装：
-
-  ```
-     sudo gem install cocoapods
-  ```
-
-  如果您的网络不能翻墙，可以通过国内 Ruby China 的 RubyGems 镜像进行安装。
-
-  在终端依次运行以下命令：
-
-  ```
-     gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
-     sudo gem install cocoapods
-  ```
-
- 2. 查询 CocoaPods 源中的本库
-
-  在终端中运行以下命令：
-
-  ```
-     pod search CYLTabBarController
-  ```
- 
-   这里注意，这个命令搜索的是本机上的最新版本，并没有联网查询。如果运行以上命令，没有搜到或者搜不到最新版本，您可以运行以下命令，更新一下您本地的 CocoaPods 源列表。
-
-  ```
-     pod repo update
-  ```
- 
- 3. 使用 CocoaPods 导入
-
-  打开终端，进入到您的工程目录，执行以下命令，会自动生成一个 Podfile 文件。
-
-  ```
-     pod init
-  ```
-
-  然后使用 CocoaPods 进行安装。如果尚未安装 CocoaPods，运行以下命令进行安装：
-
- ```
-    gem install cocoapods
+ ```Objective-C
+pod "CYLTabBarController", "~>1.6.5"
  ```
 
-  打开 Podfile，在您项目的 target 下加入以下内容。（在此以 v1.6.7 版本为例）
+注意：v1.6.5是 iOS10 适配版本，之前版本可能在 iOS10 上表现异常。
 
-  在文件 `Podfile` 中加入以下内容：
 
- ```
-    pod 'CYLTabBarController', '1.8.0'
- ```
+然后使用 `cocoaPods` 进行安装：
 
-  然后在终端中运行以下命令：
+如果尚未安装 CocoaPods, 运行以下命令进行安装:
 
- ```
-    pod install
+
+ ```Objective-C
+gem install cocoapods
  ```
 
-  或者这个命令：
 
- ```
-    # 禁止升级 CocoaPods 的 spec 仓库，否则会卡在 Analyzing dependencies，非常慢
-    pod update --verbose --no-repo-update
- ```
+安装成功后就可以安装依赖了：
 
-  如果提示找不到库，则可去掉 `--no-repo-update`。
+建议使用如下方式：
 
-  完成后，CocoaPods 会在您的工程根目录下生成一个 `.xcworkspace` 文件。您需要通过此文件打开您的工程，而不是之前的 `.xcodeproj`。
 
-**CocoaPods 使用说明**
-
-**指定 CYLTabBarController 版本** 
-
-CocoaPods 中，有几种设置 CYLTabBarController 版本的方法。如：
-
-`>= 1.8.X` 会根据您本地的 CocoaPods 源列表，导入不低于 `1.8.X` 版本的 CYLTabBarController。
-
-`~> 1.8.X` 会根据您本地的 CocoaPods 源列表，介于 1.8.X~1.9.0 之前版本的 CYLTabBarController。
-我们建议您锁定版本，便于团队开发。如，指定 1.6.7 版本。
-
- 
-```
-pod 'CYLTabBarController', '1.8.0'
+ ```Objective-C
+ # 禁止升级CocoaPods的spec仓库，否则会卡在 Analyzing dependencies ，非常慢 
+ pod update --verbose --no-repo-update
  ```
 
- - 升级本地 CocoaPods 源
 
-  `CocoaPods 有一个中心化的源，默认本地会缓存 CocoaPods 源服务器上的所有 CYLTabBarController 版本。
+如果提示找不到库，则可去掉 --no-repo-update
 
- 如果搜索的时候没有搜到或者搜不到最新版本，可以执行以下命令更新一下本地的缓存。
 
- ```
-pod repo update
- ```
- 
- - 升级工程的 CYLTabBarController 版本
-
- 更新您工程目录中 Podfile 指定的 CYLTabBarController 版本后，在终端中执行以下命令。
-
- ```
+ ```Objective-C
 pod update
  ```
 
 
- - 清除 Cocoapods 本地缓存
 
- 特殊情况下，由于网络或者别的原因，通过 CocoaPods 下载的文件可能会有问题。
-
- 这时候您可以删除 CocoaPods 的缓存(~/Library/Caches/CocoaPods/Pods/Release 目录)，再次导入即可。
-
- - 查看当前使用的 CYLTabBarController 版本
-
- 您可以在 Podfile.lock 文件中看到您工程中使用的 CYLTabBarController 版本。
-
- 关于 CocoaPods 的更多内容，您可以参考 [CocoaPods 文档](https://cocoapods.org/)。
 
 ### 第二步：设置CYLTabBarController的两个数组：控制器数组和TabBar属性数组
 
@@ -309,7 +230,6 @@ pod update
 + (NSUInteger)indexOfPlusButtonInTabBar;
 + (CGFloat)multiplierOfTabBarHeight:(CGFloat)tabBarHeight;
 + (UIViewController *)plusChildViewController;
-+ (BOOL)shouldSelectPlusChildViewController;
  ```
 
 作用分别是：
@@ -522,32 +442,9 @@ Airbnb-app效果：
 
 注意：必须同时实现 `+indexOfPlusButtonInTabBar` 来指定 PlusButton 的位置。
 
-遵循几个协议：
+遵循两个协议：
 
 ![enter image description here](http://i64.tinypic.com/14jw5zt.jpg)
-
-
-另外你可以通过下面这个方法获取到 `PlusButton` 的点击事件：
-
-```Objective-C
-+ (BOOL)shouldSelectPlusChildViewController;
-```
-
-用法如下：
-
-
-```Objective-C
-+ (BOOL)shouldSelectPlusChildViewController {
-    BOOL isSelected = CYLExternPlusButton.selected;
-    if (isSelected) {
-        NSLog(@"🔴类名与方法名：%@（在第%@行），描述：%@", @(__PRETTY_FUNCTION__), @(__LINE__), @"PlusButton is selected");
-    } else {
-        NSLog(@"🔴类名与方法名：%@（在第%@行），描述：%@", @(__PRETTY_FUNCTION__), @(__LINE__), @"PlusButton is not selected");
-    }
-    return YES;
-}
-
-```
 
 ## 让TabBarItem仅显示图标，并使图标垂直居中 
 
@@ -691,23 +588,6 @@ A：
     [super registerPlusButton];
 }
  ```
-
-Q: 我的样式是点击 `plusButton` 后跳转到一个 `ViewController`，但是选中了一次中间的 `plusButton` 之后，再点别的 `tabItem` ，中间不会变成 `normal` 的状态。
-
-A: 有两种情况会造成这个问题：
-
- 1.  应该是你的 `tabBar` 设置了 `delegate` 了，你要是 `tabBar` 的代理没设置的话，默认会有这个 `selected` 状态切换的处理。你设置代理后，会覆盖我的行为。所以手动加上就好了。
-
- ```Objective-C
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    [[self cyl_tabBarController] updateSelectionStatusIfNeededForTabBarController:tabBarController shouldSelectViewController:viewController];
-    return YES;
-}
- ```
-
- 2. `plusButton` 添加了自定义点击事件或者自定义手势，因为这样会造成点击事件冲突或手势冲突，当需要 `pushViewController` 的时候，这个库会自动的添加点击事件，你这里重新加了点击事件所以冲突了；
-
- 在你项目的基础，把 `plusButton` 的点击事件取消掉,也就是 `addTarget` 这一行注释掉，手势事件也同理，应该就ok了
 
 （更多iOS开发干货，欢迎关注  [微博@iOS程序犭袁](http://weibo.com/luohanchenyilong/) ）
 

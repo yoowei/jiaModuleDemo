@@ -10,9 +10,12 @@
 
 #import "DesignerServiceApi.h"
 
+#import "JiaPathchModel.h"
+#import "JiaCoreConfigManager.h"
+
 @interface DesignerViewController()
 
-@property (nonatomic, strong) UIButton *returnButton;
+@property(nonatomic,strong)UIButton *returnButton;
 @property(nonatomic,strong)UILabel *myDesignerLabel;
 @property(nonatomic,strong)UILabel *myDesignIDLabel;
 @property(nonatomic,strong)UIImageView *myDesignImageView;
@@ -23,8 +26,39 @@
 
 #pragma mark – Life Cycle
 
+-(void)downTest{
+//    热更新内容（测试一把？）
+      JiaCoreConfigManager *jiaCoreConfig=[JiaCoreConfigManager sharedInstance];
+        JiaPathchModel *sample=[[JiaPathchModel alloc]init];
+        sample.patchId = @"patchId_sample1";
+        sample.md5 = @"2cf1c6f6c5632dc21224bf42c698706b";
+        sample.url = @"http://test.qshmall.net:9090/demo1.js";
+        sample.ver = @"1";
+    
+        JiaPathchModel *sample1=[[JiaPathchModel alloc]init];
+        sample1.patchId = @"patchId_sample2";
+        sample1.md5 = @"e8a4eaeadce5a4598fb9a868e09c75fd";
+        sample1.url = @"http://test.qshmall.net:9090/demo2.js";
+        sample1.ver = @"1";
+    
+        jiaCoreConfig.jSPatchMutableArray=[@[sample,sample1] mutableCopy];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+  //测试补丁安装后是否需要重启*********个人认为如果该替换东西已经执行过了，那么就要重新启动或者返回重新操作
+
+    UIButton *testBtn=  [UIButton buttonWithType:UIButtonTypeCustom];
+    testBtn.frame=CGRectMake(100, 200, 100, 100);
+    [testBtn setTitle:@"点击测试" forState:UIControlStateNormal];
+    [testBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [testBtn addTarget:self action:@selector(downTest) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:testBtn];
+    
+//    **********************************************************
+    
     self.view.backgroundColor=[UIColor blueColor];
     [self layoutPageSubviews];
     self.navigationItem.title=@"设计师模块";
@@ -149,7 +183,7 @@
 
 -(NSString *)getMessage
 {
-    return @"我是原来的内容";
+    return @"hehehhehhe";
 }
 
 -(NSString *)getOtherMessage

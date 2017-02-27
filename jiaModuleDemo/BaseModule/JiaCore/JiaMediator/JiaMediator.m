@@ -32,9 +32,28 @@
     // 这里就是针对远程app调用404的简单处理了
     return @(NO);
   }
+    //888888888888888888888888888888888888888888888888888888888888888888888888888
+    NSURL *urll = [NSURL URLWithString:
+                   @"http://some-site.com:999/dir1/dir2;param?field-1=value-1&field-2=value-2#anchor1"];
+    
+    NSLog(@"Scheme: %@", [urll scheme]);
+    NSLog(@"Host: %@", [urll host]);
+    NSLog(@"Port: %@", [urll port]);
+    NSLog(@"Path: %@", [urll path]);
+    NSLog(@"Relative path: %@", [urll relativePath]);
+    NSLog(@"Path components as array: %@", [urll pathComponents]);
+    NSLog(@"Parameter string: %@", [urll parameterString]);
+    NSLog(@"Query: %@", [urll query]);
+    NSLog(@"Fragment: %@", [urll fragment]);
+    //888888888888888888888888888888888888888888888888888888888888888888888888888
+
+    //    name=wujunyang&ID=1001&image=designerImage
+    
+    //    jiaScheme://Designer/nativeFetchDetailViewController?name=wujunyang&ID=1001&image=designerImage
 
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   NSString *urlString = [url query];
+    //name=wujunyang&ID=1001&image=designerImage
   for (NSString *param in [urlString componentsSeparatedByString:@"&"]) {
     NSArray *elts = [param componentsSeparatedByString:@"="];
     if ([elts count] < 2)
@@ -71,13 +90,13 @@
   SEL action = NSSelectorFromString(actionString);
 
   if (target == nil) {
-    // 这里是处理无响应请求的地方之一，这个demo做得比较简单，如果没有可以响应的target，就直接return了。实际开发过程中是可以事先给一个固定的target专门用于在这个时候顶上，然后处理这种请求的
+    // 这里是处理无target的情况，这个demo做得比较简单，如果没有可以响应的target，就直接return了。实际开发过程中是可以事先给一个固定的target专门用于在这个时候顶上，然后处理这种请求的
     return nil;
   }
 
   if ([target respondsToSelector:action]) {
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"////这个是为了防止警告
     return [target performSelector:action withObject:params];
 #pragma clang diagnostic pop
   } else {

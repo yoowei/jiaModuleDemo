@@ -22,7 +22,7 @@
 
 @implementation AppDelegate
 
-
+//组件的粒度比模块的粒度小。
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //JiaCore基础模块相关配置
@@ -30,7 +30,9 @@
     jiaCoreConfig.recordlogger=YES;
     jiaCoreConfig.openDebug=NO;
     
-    //热更新内容
+//    jiaCoreConfig.openDebug=YES;//可以测试一把
+    
+////    热更新内容（测试一把？）
     JiaPathchModel *sample=[[JiaPathchModel alloc]init];
     sample.patchId = @"patchId_sample1";
     sample.md5 = @"2cf1c6f6c5632dc21224bf42c698706b";
@@ -92,10 +94,7 @@
     self.window.rootViewController = navc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
 
-    
-    
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 

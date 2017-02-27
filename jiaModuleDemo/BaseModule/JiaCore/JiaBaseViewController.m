@@ -33,6 +33,7 @@
 -(id)init
 {
     if (self == [super init]) {
+//iOS 7 之后，setTranslucent=yes 默认的   则状态栏及导航栏底部为透明的，界面上的组件应该从屏幕顶部开始显示，因为是半透明的，可以看到，所以为了不和状态栏及导航栏重叠，第一个组件的y应该从44+20的位置算起.如果设置成no，则状态栏及导航样不为透明的，界面上的组件就是紧挨着导航栏显示了，所以就不需要让第一个组件在y方向偏离44+20的高度了。
         [self.navigationController.navigationBar setTranslucent:NO];
         [self.navigationController setNavigationBarHidden:YES];
         navBarY = 0;

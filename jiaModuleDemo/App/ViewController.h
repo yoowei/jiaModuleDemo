@@ -12,7 +12,5 @@
 #import "JiaMediator+UserModuleActions.h"
 
 @interface ViewController : JiaBaseViewController
-
-
 @end
 

@@ -3122,11 +3122,13 @@
 					"$(PROJECT_DIR)/jiaModuleDemo/BaseModule/JiaShare/SocialLibraries/TencentWeibo",
 					"$(PROJECT_DIR)/jiaModuleDemo/BaseModule/JiaShare/SocialLibraries/WeChat",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sm.WirelessSanMing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1afc8801-8d86-42cc-b98c-96e505b89c50";
 				PROVISIONING_PROFILE_SPECIFIER = WirelessSanMingProfile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
@@ -3159,6 +3161,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1afc8801-8d86-42cc-b98c-96e505b89c50";
 				PROVISIONING_PROFILE_SPECIFIER = WirelessSanMingProfile;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
 			name = Release;
 		};

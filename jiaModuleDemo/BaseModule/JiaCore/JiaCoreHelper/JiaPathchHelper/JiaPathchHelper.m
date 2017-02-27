@@ -54,9 +54,9 @@
     //先处理要删除的文件
     for (JiaPathchModel *item in _mcLocalPatchs) {
         if (![self existWithArray:mcPatchs model:item]) {
-            //不存在
-            if ([self deleteFileWithJiaPathchModel:item]) {
-                [_mcLocalPatchs removeObject:item];
+            //不存在（新传进来的没有包含本地的item？）
+            if ([self deleteFileWithJiaPathchModel:item]) {//文件删除成功，
+                [_mcLocalPatchs removeObject:item];//再从本地补丁数组移除
             }
         }
     }
@@ -65,9 +65,9 @@
     for (JiaPathchModel *item in mcPatchs) {
         item.status=JiaPatchModelStatusUnInstall;
         if (![self existWithArray:_mcLocalPatchs model:item]&&[item.ver isEqualToString:[self mcCurrentVer]]) {
-            //不存在 要进行下载 并只对正确的版本进行
-            [self mcUpdatePatchFile:item];
-            [_mcLocalPatchs addObject:item];
+            //本地不存在 所以要进行下载 但是只对不同的版本分别下载（考虑版本兼容性）
+            [self mcUpdatePatchFile:item];//然后将补丁下载下来，存入沙盒
+            [_mcLocalPatchs addObject:item];//本地补丁数组添加(这是一个很好的思路？用数组来象征性的管理补丁？)
         }
     }
     
@@ -103,6 +103,7 @@
         return result;
     }
     
+    //  传进来一个数组和一个模型item。然后再遍历数组，检查一下这个数组里面有没有和这个模型一样的
     for (JiaPathchModel *item in array)
     {
         if ([model.patchId isEqualToString:item.patchId]&&[model.md5 isEqualToString:item.md5]) {
@@ -164,19 +165,22 @@
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     NSURL *URL = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response)
-                                              {
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request
+                                                                     progress:nil
+                                                                  destination:^NSURL *(NSURL *targetPath, NSURLResponse *response){
+                                                                      
                                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                                                   if (httpResponse.statusCode==200) {
                                                       patch.status = JiaPatchModelStatusUnInstall;
                                                       //保存到本地 Library/Caches目录下
                                                       return [NSURL fileURLWithPath:savePath];
-                                                  }
-                                                  else
+                                                      //可以看出来使用fileURLWithPath创建出来的URL会自动加上协议头file://;???
+                                                  }else
                                                   {
                                                       return nil;
                                                   }
                                               }
+                                              
                                                             completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error)
                                               {
                                                   if(!error){
@@ -301,7 +305,7 @@
  *
  *  @param path 文件路径.
  *
- *  @return 文件的md5值.
+ *  @return 文件的md5值.（看这个节奏是拿到二进制文件，获取其MD5值？）
  */
 -(NSString *)mcMd5HashOfPath:(NSString *)path
 {
