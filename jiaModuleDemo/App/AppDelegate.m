@@ -30,27 +30,14 @@
     jiaCoreConfig.recordlogger=YES;
     jiaCoreConfig.openDebug=NO;
     
-//    jiaCoreConfig.openDebug=YES;//可以测试一把
+    //jiaCoreConfig.openDebug=YES;//可以测试一把
     
-////    热更新内容（测试一把？）
-    JiaPathchModel *sample=[[JiaPathchModel alloc]init];
-    sample.patchId = @"patchId_sample1";
-    sample.md5 = @"2cf1c6f6c5632dc21224bf42c698706b";
-    sample.url = @"http://test.qshmall.net:9090/demo1.js";
-    sample.ver = @"1";
-    
-    JiaPathchModel *sample1=[[JiaPathchModel alloc]init];
-    sample1.patchId = @"patchId_sample2";
-    sample1.md5 = @"e8a4eaeadce5a4598fb9a868e09c75fd";
-    sample1.url = @"http://test.qshmall.net:9090/demo2.js";
-    sample1.ver = @"1";
-    
-    jiaCoreConfig.jSPatchMutableArray=[@[sample,sample1] mutableCopy];
+    //jspatch热修复
+    [self jspatchInstall];
     
     //设置模块jiaDesigner相关配置
     jiaDesignerConfigManager *jiaDesignerConfig=[jiaDesignerConfigManager sharedInstance];
     jiaDesignerConfig.prefixNetWorkUrl=@"http://private-iary-mock.com/";
-    
     
     
     //设置个推模块的配置
@@ -87,35 +74,64 @@
     [jiaShareConfig setPlaform:JiaSocialPlatConfigType_Sina appKey:@"3921700954" appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
     
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ViewController *vc = [[ViewController alloc]init];
     UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:vc];
     self.window.rootViewController = navc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [super applicationWillResignActive:application];
+
+-(void)jspatchInstall {
+    JiaCoreConfigManager *jiaCoreConfig=[JiaCoreConfigManager sharedInstance];
+    ////    热更新内容（测试一把？）
+    JiaPathchModel *sample=[[JiaPathchModel alloc]init];
+    sample.patchId = @"patchId_sample1";
+    sample.md5 = @"2cf1c6f6c5632dc21224bf42c698706b";
+    sample.url = @"http://test.qshmall.net:9090/demo1.js";
+    sample.ver = @"1";
+    
+    JiaPathchModel *sample1=[[JiaPathchModel alloc]init];
+    sample1.patchId = @"patchId_sample2";
+    sample1.md5 = @"e8a4eaeadce5a4598fb9a868e09c75fd";
+    sample1.url = @"http://test.qshmall.net:9090/demo2.js";
+    sample1.ver = @"1";
+    
+    jiaCoreConfig.jSPatchMutableArray=[@[sample,sample1] mutableCopy];
+
 }
 
+
+
+//Suspended 挂起 程序在后台不能执行代码。当挂起时，程序还是停留在内存中的，当系统内存低时，系统就把挂起的程序清除掉，为前台程序提供更多的内存。
+//当将app挂起时先调用applicationWillResignActive，然后再调用applicationDidEnterBackground进入后台。
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [super applicationWillResignActive:application];
+    /*添加你自己的挂起前准备代码*/
+}
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     [super applicationDidEnterBackground:application];
 }
 
+//当重新从后台挂起状态激活，先调用applicationWillEnterForeground，然后调用applicationDidBecomeActive。注意如果是APP重新启动是不会调用这个代理方法的applicationWillEnterForeground。
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [super applicationWillEnterForeground:application];
+    
+//    针对部分用户处于挂起的状态时候，服务器下发了紧急bug热修复补丁，想让用户在APP重新回到激活状态，就能执行热修复，不需要重新启动app。真实的项目中，网络请求处理逻辑具体再说。
+       [self jspatchInstall];
 }
 
+//已经变成激活状态。
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [super applicationDidBecomeActive:application];
 }
 
+
 - (void)applicationWillTerminate:(UIApplication *)application {
     [super applicationWillTerminate:application];
+//    当程序将要退出是被调用，通常是用来保存数据和一些退出前的清理工作
 }
 
 

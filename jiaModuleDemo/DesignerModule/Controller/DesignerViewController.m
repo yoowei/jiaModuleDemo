@@ -48,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-  //测试补丁安装后是否需要重启*********个人认为如果该替换东西已经执行过了，那么就要重新启动或者返回重新操作
+  //测试补丁安装后是否需要重启，测试****************************************
 
     UIButton *testBtn=  [UIButton buttonWithType:UIButtonTypeCustom];
     testBtn.frame=CGRectMake(100, 200, 100, 100);
@@ -57,7 +57,7 @@
     [testBtn addTarget:self action:@selector(downTest) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:testBtn];
     
-//    **********************************************************
+ //**********************************************************
     
     self.view.backgroundColor=[UIColor blueColor];
     [self layoutPageSubviews];
